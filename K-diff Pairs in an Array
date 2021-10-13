@@ -1,0 +1,12 @@
+from collections import Counter
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        hashm = dict()
+        res = set()
+        for ind,val in enumerate(nums):
+            hashm[val]=ind
+        for n in range(len(nums)):
+            num = nums[n]
+            if (num-k) in hashm and hashm[num-k]!=n:
+                res.add((num,num-k))
+        return len(res)
